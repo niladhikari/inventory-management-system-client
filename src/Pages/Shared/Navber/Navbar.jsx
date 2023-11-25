@@ -29,7 +29,6 @@ const Navbar = () => {
     </>
   );
 
-
   const loggedInLinks = (
     <>
       <li>

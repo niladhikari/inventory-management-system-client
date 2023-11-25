@@ -5,6 +5,8 @@ import Login from './../Pages/Login/Login';
 import SignUp from './../Pages/SignUp/SignUp';
 import CreateShop from "../Pages/CreateShop/CreateShop";
 import PrivateRoute from './PrivateRoute';
+import Dashboard from "../Layouts/Dashboard/Dashboard";
+
 
 
 
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: 'dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+  }
 ]);
 
 export default router;

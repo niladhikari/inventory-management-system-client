@@ -25,19 +25,34 @@ const CreateShop = () => {
 
     console.log(menuItem);
 
-    const menuRes = await axiosPrivate.post("/shops", menuItem);
-    console.log(menuRes.data);
-    if (menuRes.data.insertedId) {
-      // show success popup
-      reset();
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: `${data.name} is added to the menu.`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
+    try {
+        const menuRes = await axiosPrivate.post("/shops", menuItem);
+  
+        // Handle success response
+        if (menuRes.data.insertedId) {
+          // show success popup
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${data.shopName} is added to the menu.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      } catch (error) {
+        // Handle error response
+        if (error.response && error.response.data.message === "User already has a shop") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You already have a shop!",
+          });
+        } else {
+          // Handle other errors
+          console.error("Error creating shop:", error);
+        }
+      }
   };
     return (
         <div className="mb-10">
