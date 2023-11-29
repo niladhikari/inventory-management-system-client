@@ -14,7 +14,7 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile, setUserData } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
@@ -29,9 +29,13 @@ const SignUp = () => {
             name: data.name,
             email: data.email,
             photo : data.photoURL,
+            crateShop: false,
+            roll: "user",
           };
           axiosPublic.post("/users", userInfo).then((res) => {
-            if (res.data.insertedId) {
+            setUserData( res.data);
+            console.log(37, res.data);
+            if (res.data._id) {
               console.log(" user add in the database");
               reset();
               Swal.fire({

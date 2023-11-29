@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "642c155b2c4774f05c36eeaa",
+        "name": "Product Management",
+        "description": "This module allows users to manage various aspects of products including creation, editing, and removal.",
+        "image": "https://i.ibb.co/M6vW2Ls/Product-management.jpg"
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeab",
+        "name": "Store Orders",
+        "description": "Store Orders module manages incoming orders, tracking, and processing customer requests.",
+        "image": "https://i.ibb.co/DG4Gryd/sales.png"
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeah",
+        "name": "Product Sales",
+        "description": "Product Sales module tracks sales data, including revenue, quantity sold, and profit margins.",
+        "image": "https://i.ibb.co/rZjNsmL/pk-sales-success-1024x536.jpg"
+    },
+    {
+        "_id": "642c155b2c4774f05c36eeag",
+        "name": "Stock Levels",
+        "description": "Stock Levels module monitors inventory quantities, alerts low stock, and manages restocking.",
+        "image": "https://i.ibb.co/Jz4gsZs/warehouse-workers-check-inventory-levels-items-shelves-inventory.jpg"
+    }
+]

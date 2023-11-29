@@ -1,0 +1,28 @@
+
+  [
+    {
+      "name": "John Doe",
+      "image": "https://i.ibb.co/zPGTtv2/John-Doe.jpg",
+      "position": "CEO",
+      "description": "John Doe is a visionary leader with a strong background in business management. He drives the company's strategic initiatives and oversees overall operations."
+    },
+    {
+      "name": "Jane Smith",
+      "image": "https://i.ibb.co/C5hB7PX/Jane-Smith.jpg",
+      "position": "CTO",
+      "description": "Jane Smith is an experienced technologist adept at leveraging technology to streamline processes. She leads the technological direction and innovation."
+    },
+    {
+      "name": "Michael Johnson",
+      "image": "https://i.ibb.co/2Yyr5Ln/Michael-Johnson.jpg",
+      "position": "COO",
+      "description": "Michael Johnson is a seasoned operations expert focusing on optimizing efficiency and ensuring smooth day-to-day operations."
+    },
+    {
+      "name": "Emily Brown",
+      "image": "https://i.ibb.co/gvK1HWV/Emily-Brown.webp",
+      "position": "Head of Product",
+      "description": "Emily Brown is a creative product strategist dedicated to delivering high-quality solutions that meet customer needs."
+    }
+
+  ]

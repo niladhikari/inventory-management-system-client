@@ -1,5 +1,4 @@
-
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hook/useAuth";
 
@@ -7,8 +6,38 @@ const Navbar = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
+  const router = useNavigate();
+  const { user, logOut, tirger, setTriger,changeDashboardAndShop } = useAuth();
 
-  const { user, logOut } = useAuth();
+  console.log(user);
+
+ 
+
+  // useEffect(() => {
+  //   async function fetchDataFromServer() {
+  //     try {
+  //       const response = await fetch(
+  //         `http://localhost:5000/singleUser/${user?.email}`
+  //       );
+  //       const data = await response.json();
+  //       setChangeDashboardAndShop(data.crateShop);
+  //       setIsAdmin(data.roll);
+  //     } catch (error) {
+  //       console.log("Error fetching data:", error);
+  //     }
+  //   }
+  //   fetchDataFromServer();
+  // }, [setIsAdmin, user]);
+
+
+ 
+
+  useEffect(() => {
+    if (tirger) {
+      router("/dashboard");
+      setTriger(false);
+    }
+  }, [tirger]);
 
   const links = (
     <>
@@ -23,7 +52,13 @@ const Navbar = () => {
           <NavLink to={"/createStore"}>Create-Store</NavLink>
         </li>
         <li>
-        <a href="https://www.youtube.com/watch?v=sL15VM-xN60" target="_blank" rel="noopener noreferrer">Watch Demo</a>
+          <a
+            href="https://www.youtube.com/watch?v=sL15VM-xN60"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch Demo
+          </a>
         </li>
       </>
     </>
@@ -34,18 +69,23 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      {user && !user.hasStore && (
+      {user && (
         <li>
-          <NavLink to={"/createStore"}>Create-Store</NavLink>
-        </li>
-      )}
-      {user && user.hasStore && (
-        <li>
-          <NavLink to={"/dashboard"}>Dashboard</NavLink>
+          {changeDashboardAndShop ? (
+            <NavLink to={"/dashboard"}>Dashboard</NavLink>
+          ) : (
+            <NavLink to={"/createStore"}>Create-Store</NavLink>
+          )}
         </li>
       )}
       <li>
-      <a href="https://www.youtube.com/watch?v=sL15VM-xN60" target="_blank" rel="noopener noreferrer">Watch Demo</a>
+        <a
+          href="https://www.youtube.com/watch?v=sL15VM-xN60"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch Demo
+        </a>
       </li>
     </>
   );
@@ -75,7 +115,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar z-20 opacity-60">
+      <div className="navbar fixed z-20 opacity-60 bg-[#15151580] max-w-7xl mx-auto">
         <div className="navbar justify-between  ">
           <div className="navbar-start mt-3">
             <div className="dropdown">
@@ -97,17 +137,23 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content  font-bold mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content  font-bold mt-3 z-[300] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 {user ? loggedInLinks : links}
               </ul>
             </div>
             <div className="grid space-y-0">
-             <img  className="w-36" src="https://i.ibb.co/5vQFvYb/inventroy-removebg-preview.png" alt="" />
+              <img
+                className="w-36"
+                src="https://i.ibb.co/5vQFvYb/inventroy-removebg-preview.png"
+                alt=""
+              />
             </div>
           </div>
           <div className="navbar-center hidden md:flex">
-            <ul className="menu font-bold menu-horizontal px-1">{user ? loggedInLinks : links}</ul>
+            <ul className="menu font-bold menu-horizontal px-1">
+              {user ? loggedInLinks : links}
+            </ul>
           </div>
 
           {/* navbar light  */}

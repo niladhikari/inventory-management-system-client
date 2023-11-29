@@ -1,12 +1,23 @@
 /* eslint-disable react/prop-types */
 
+
+
+import { Typography, Grid } from '@mui/material';
+
 const SectionTitle = ({ heading, subHeading }) => {
   return (
-    <div className="mx-auto text-center md:w-4/12 my-8">
-      <p className="text-yellow-600 mb-2">--- {subHeading} ---</p>
-      <h3 className="text-3xl uppercase border-y-4 py-4">{heading}</h3>
-    </div>
+    <Grid container justifyContent="center" alignItems="center" textAlign="center" sx={{ margin: 'auto' }}>
+      <Grid item xs={12} md={6}>
+        <Typography variant="subtitle1" sx={{ color: '#D97706',borderBottom: '4px solid #D0D0D0', marginBottom: '8px' }}>
+          --- {subHeading} ---
+        </Typography>
+        <Typography variant="h3" sx={{ fontSize: '2rem', textTransform: 'uppercase', borderBottom: '4px solid #D0D0D0', padding: '16px',marginBottom: '8px' }}>
+          {heading}
+        </Typography>
+      </Grid>
+    </Grid>
   );
 };
 
 export default SectionTitle;
+

@@ -1,22 +1,31 @@
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../Hook/useAuth";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const SocialLogin = () => {
-  const { SignInGoogle } = useAuth();
+  const { SignInGoogle, setUserData } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleGoogleSignIn = () => {
     SignInGoogle().then((result) => {
       console.log(result.user);
+      const from = location.state?.from?.pathname || "/";
       const userInfo = {
         email: result.user?.email,
         name: result.user?.displayName,
+        crateShop: false
       };
       axiosPublic.post("/users", userInfo).then((res) => {
-        console.log(res.data);
-        navigate("/");
+        setUserData(res.data);
+        console.log(20,res.data);
+        if(res.data.crateShop){
+          navigate('/dashboard')
+        }
+        else{
+          navigate(from, { replace: true });
+        }
       });
     });
   };

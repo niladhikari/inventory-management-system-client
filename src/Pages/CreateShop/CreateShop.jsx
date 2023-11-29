@@ -6,10 +6,12 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FaLaptopHouse } from "react-icons/fa";
 import useAuth from "../../Hook/useAuth";
+import { useNavigate } from "react-router-dom";
 const CreateShop = () => {
     const { register, handleSubmit ,reset} = useForm();
   const axiosPrivate = useAxiosSecure();
-  const {user} = useAuth();
+  const {user,setUserData} = useAuth();
+  const router = useNavigate()
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -21,17 +23,21 @@ const CreateShop = () => {
       logo: data.logo,
       location: data.location,
       description: data.description,
+      limit: 3,
     };
 
     console.log(menuItem);
 
     try {
         const menuRes = await axiosPrivate.post("/shops", menuItem);
+        setUserData(menuRes.data.UserData)
+        console.log(34,menuRes.data.UserData);
   
         // Handle success response
-        if (menuRes.data.insertedId) {
+        if (menuRes.data.insertResult.insertedId) {
           // show success popup
           reset();
+          router('/dashboard')
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -50,7 +56,7 @@ const CreateShop = () => {
           });
         } else {
           // Handle other errors
-          console.error("Error creating shop:", error);
+          console.log("Error creating shop:", error);
         }
       }
   };

@@ -12,13 +12,20 @@ import {
 import auth from "../../firebase/firebase.config";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 
+
 export const AuthContext = createContext(null);
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const axios = useAxiosPublic();
+  const [userData, setUserData] = useState();
+  const [tirger, setTriger] = useState(false);
+  const axiosPublic = useAxiosPublic();
+  const [updatePrice, setUpdatePrice] = useState();
+  const [updateLimit, setUpdateLimit] = useState();
+  const [isAdmin, setIsAdmin] = useState();
+  const [changeDashboardAndShop, setChangeDashboardAndShop] = useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -49,29 +56,49 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      
       console.log("current user", currentUser);
       if (currentUser) {
         const userInfo = {
           email: currentUser.email,
         };
-        axios.post("/jwt", userInfo)
-        .then(res=>{
+        axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
-            localStorage.setItem('access-token',res.data.token)
+            localStorage.setItem("access-token", res.data.token);
+            setUser(currentUser);
             setLoading(false);
+         
           }
-        })
-        
+        });
       } else {
-        localStorage.removeItem('access-token')
+        localStorage.removeItem("access-token");
+        setUser(null);
         setLoading(false);
       }
     });
     return () => {
       return unsubscribe();
     };
-  }, [axios]);
+  }, [axiosPublic]);
+
+
+
+
+  useEffect(() => {
+    async function fetchDataFromServer() {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/singleUser/${user?.email}`
+        );
+        const data = await response.json();
+        setChangeDashboardAndShop(data.crateShop);
+        setIsAdmin(data.roll);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    }
+    fetchDataFromServer();
+  }, [setIsAdmin, user]);
 
   const authInfo = {
     user,
@@ -81,6 +108,16 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
     SignInGoogle,
+    userData,
+    setUserData,
+    tirger,
+    setTriger,
+    updatePrice,
+    setUpdatePrice,
+    updateLimit,
+    setUpdateLimit,
+    isAdmin, 
+    changeDashboardAndShop
   };
 
   return (
