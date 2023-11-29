@@ -39,8 +39,10 @@ const Checkout = () => {
             {cart &&
               cart.map(product => (
                 <View key={product._id}>
+                  <image>Product Name: {product.image}</image>
                   <Text>Product Name: {product.name}</Text>
                   <Text>Product Discount: {product.discount}</Text>
+                  <Text>Product Discount: {parseFloat(product.sellingPrice).toFixed(2)}</Text>
                   <Text>Product CurrentAddDate: {product.currentAddDate}</Text>
                 </View>
               ))}

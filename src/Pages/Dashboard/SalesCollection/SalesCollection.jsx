@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 
 const SalesCollection = () => {
-  const [product] = useProduct();
+  const [product,refetch] = useProduct();
   console.log(product);
   const axiosSecure = useAxiosSecure();
 
@@ -40,24 +40,16 @@ let currentDate = date.toLocaleDateString();
   
     axiosSecure.post("/carts", allInformation).then((res) => {
       console.log(res.data);
-      if (res.data.insertedId) {
+      if (res.data.acknowledged == 'true') {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${name} added to your cart`,
+          title: `${res.data.name} added to your cart`,
           showConfirmButton: false,
           timer: 1500,
         });
+        refetch();
         // refetch cart to update the cart items count
-      }
-      else{
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: `Product Quantity is finish!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
       }
     });
   };

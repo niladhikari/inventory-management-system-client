@@ -30,7 +30,9 @@ const AddProduct = () => {
     console.log(res.data);
     if (res.data.success) {
       // Calculating Selling Price
-      const sellingPrice =parseFloat(data.production) + 1.075 + (parseFloat(data.profit) / 100).toFixed(2);
+      // const sellingPrice =parseFloat(data.production) + 1.075 + (parseFloat(data.profit) / 100).toFixed(2);
+
+      const sellingPrice = parseFloat(data.production + (data.production * (7.5 / 100)) + (data.production * (data.profit / 100))).toFixed(2);
 
       const date = new Date();
      let currentDate = date.toLocaleDateString();

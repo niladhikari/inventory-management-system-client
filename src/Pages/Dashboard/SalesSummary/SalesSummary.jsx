@@ -3,12 +3,13 @@ import { Helmet } from "react-helmet-async";
 
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
+
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaWallet, FaMoneyBillAlt } from "react-icons/fa";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useAllSales from "../../../Hook/useAllSales";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import SalesHistory from "./SalesHistory";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 
@@ -24,13 +25,6 @@ const SalesSummary = () => {
     (total, item) => total + item.production,
     0
   );
-
-
-  const sortedSales = allSales.slice().sort((a, b) => {
-    const dateA = new Date(a.saleDate).getTime();
-    const dateB = new Date(b.saleDate).getTime();
-    return dateB - dateA;
-  })
 
   const data = [
     {
@@ -79,8 +73,7 @@ const SalesSummary = () => {
         heading={"Sales Summary"}
         subHeading={"All the Sales Summary"}
       />
-      
-      
+
       <h2 className="text-center text-2xl font-bold my-10">Sales Count</h2>
       <Grid
         container
@@ -177,32 +170,8 @@ const SalesSummary = () => {
         </BarChart>
       </div>
       <h2 className="text-center text-2xl font-bold my-10">Sales History</h2>
-      <div className="overflow-x-auto mt-4 rounded-xl">
-      <Paper>
-        <Table className="table" sx={{ backgroundColor: 'yellow.100' }}>
-          <TableHead>
-            <TableRow sx={{ backgroundColor: 'orange.300' }}>
-              <TableCell></TableCell>
-              <TableCell>Product Name</TableCell>
-              <TableCell>Selling Date</TableCell>
-              <TableCell>Profit</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedSales.map((item, index) => (
-              <TableRow key={item._id}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{item.productName}</TableCell>
-                <TableCell>{item.saleDate.substring(0, 10)}</TableCell>
-                <TableCell>
-                  {parseFloat(item.sellingPrice - item.production).toFixed(2)}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
-    </div>
+
+      <SalesHistory></SalesHistory>
     </div>
   );
 };
