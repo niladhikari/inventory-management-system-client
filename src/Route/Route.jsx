@@ -101,7 +101,7 @@ const router = createBrowserRouter([
       // for admin route
       {
         path: "AdminHome",
-        element: <AdminHome></AdminHome>,
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>,
       },
       {
         path: "manageShop",

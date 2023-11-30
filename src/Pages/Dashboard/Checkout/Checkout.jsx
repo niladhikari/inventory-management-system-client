@@ -79,7 +79,7 @@ const Checkout = () => {
         heading={"Check Out"}
         subHeading={"Sell The Products"}
       ></SectionTitle>
-      <div className="grid justify-center">
+      <div className="grid justify-center mt-10">
         <button onClick={handleDelete} className="bg-blue-300 rounded-md p-4 text-xl font-bold btn-primary">Get Paid</button>
       </div>
       <div>{loading ? <p className="text-red-500">Loading</p> : ''}</div>
@@ -91,7 +91,7 @@ const Checkout = () => {
                 <img
                   src={product.image}
                   alt="Shoes"
-                  className="rounded-xl"
+                  className="rounded-xl md:w-96"
                 />
               </figure>
               <div className="card-body items-center text-center">

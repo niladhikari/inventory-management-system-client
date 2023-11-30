@@ -15,12 +15,12 @@ const ManagerHome = () => {
       </Helmet>
       <SectionTitle
         heading={"Manager Home"}
-        subHeading={"Some new"}
+        subHeading={"This Home Only For Manager"}
       ></SectionTitle>
 
       {totalProducts > 0 ? (
-        <Grid container justifyContent="space-around" alignItems="center">
-          <Typography variant="h6" className="text-2xl font-semibold">
+        <Grid container mt={4} justifyContent="space-around" alignItems="center">
+          <Typography variant="h6" fontSize={24} fontWeight={20}>
             Total {totalProducts} Product{totalProducts !== 1 ? 's' : ''} Added
           </Typography>
           <NavLink to={'/dashboard/addProduct'}>

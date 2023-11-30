@@ -9,7 +9,6 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
   const { updatePrice, updateLimit } = useAuth();
-  console.log(7, { updatePrice }, { updateLimit });
   return (
     <div>
       <Helmet>

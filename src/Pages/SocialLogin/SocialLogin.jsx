@@ -19,7 +19,6 @@ const SocialLogin = () => {
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         setUserData(res.data);
-        console.log(20,res.data);
         if(res.data.crateShop){
           navigate('/dashboard')
         }

@@ -37,12 +37,11 @@ const SalesCollection = () => {
       }
   
     axiosSecure.post("/carts", allInformation).then((res) => {
-      console.log(res.data);
-      if (res.data.acknowledged == 'true') {
+      if (res.data.result.insertedId) {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${res.data.name} added to your cart`,
+          title: `Product added to your Cart`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -68,7 +67,7 @@ const SalesCollection = () => {
         heading={"Sales Collection"}
         subHeading={"All the Sales"}
       ></SectionTitle>
-      <div className="flex  items-center gap-20">
+      <div className="flex  items-center gap-20 mt-10">
         <input
           type="text"
           placeholder="Search by Product ID"
@@ -77,7 +76,7 @@ const SalesCollection = () => {
           className="border border-gray-300 px-3 py-2 rounded-md mb-4"
         />
          <Link to={'/dashboard/checkout'}>
-         <button className="btn mb-3">checkout</button>
+         <button className="btn mb-3 bg-blue-400">checkout</button>
       </Link>
       </div>
      

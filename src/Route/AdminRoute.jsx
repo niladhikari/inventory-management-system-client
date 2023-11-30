@@ -6,7 +6,7 @@ import useAuth from "../Hook/useAuth";
 
 
 const AdminRoute = ({ children }) => {
-    const { user, loading,isAdmin } = useAuth();
+    const { user, loading, isAdmin } = useAuth();
 
     const location = useLocation();
 

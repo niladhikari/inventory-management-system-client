@@ -12,9 +12,6 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdateProduct = () => {
     const {_id,name,location,quantity,production,profit,discount,description} = useLoaderData();
-    console.log(location);
-
-    console.log(15,location);
     const { register, handleSubmit } = useForm();
     const axiosOpen = useAxiosPublic();
     const axiosPrivate = useAxiosSecure();

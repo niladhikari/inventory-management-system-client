@@ -16,7 +16,6 @@ const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 
 const SalesSummary = () => {
   const [sale] = useSales();
-  console.log(sale);
   const totalSales = sale?.reduce(
     (total, item) => total + item.sellingPrice,
     0

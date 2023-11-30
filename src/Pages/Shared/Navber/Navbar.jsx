@@ -7,10 +7,8 @@ const Navbar = () => {
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
   const router = useNavigate();
-  const { user, logOut, tirger, setTriger,changeDashboardAndShop } = useAuth();
-
-
- 
+  const { user, logOut, tirger, setTriger, changeDashboardAndShop, isAdmin } =
+    useAuth();
 
   // useEffect(() => {
   //   async function fetchDataFromServer() {
@@ -27,9 +25,6 @@ const Navbar = () => {
   //   }
   //   fetchDataFromServer();
   // }, [setIsAdmin, user]);
-
-
- 
 
   useEffect(() => {
     if (tirger) {
@@ -68,7 +63,7 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      {user && (
+      {/* {user && (
         <li>
           {changeDashboardAndShop ? (
             <NavLink to={"/dashboard"}>Dashboard</NavLink>
@@ -76,7 +71,24 @@ const Navbar = () => {
             <NavLink to={"/createStore"}>Create-Store</NavLink>
           )}
         </li>
+      )} */}
+
+      {isAdmin=='admin' && changeDashboardAndShop && (
+        <li>
+          <Link to="/dashboard/AdminHome">Dashboard</Link>
+        </li>
       )}
+      {isAdmin=='manager' && changeDashboardAndShop && (
+        <li>
+          <Link to="/dashboard/managerHome">Dashboard</Link>
+        </li>
+      )}
+      {user  && !changeDashboardAndShop && (
+        <li>
+          <NavLink to="/createStore">Create-Store</NavLink>
+        </li>
+      )}
+
       <li>
         <a
           href="https://www.youtube.com/watch?v=sL15VM-xN60"

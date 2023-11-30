@@ -93,6 +93,7 @@ const AuthProvider = ({ children }) => {
         const data = await response.json();
         setChangeDashboardAndShop(data.crateShop);
         setIsAdmin(data.roll);
+
       } catch (error) {
         console.log("Error fetching data:", error);
       }

@@ -42,18 +42,15 @@ const SaleHistoryAd = () => {
   };
 
   const handleSend = () => {
-    // Implement functionality to handle sending the input value
-    // For example, you can add logic to create a shop with the inputValue
-    // and update the user's shopName field
-    // Here, you can simulate updating the shopName for the first user in currentSales array
+  
     if (currentSales.length > 0) {
       const updatedUser = { ...currentSales[0], shopName: inputValue };
-      // Update the user in the currentSales array or make an API call to update the user
+      
       console.log("Creating shop for user:", updatedUser);
     }
 
-    setInputValue(""); // Clear input after sending
-    toggleModal(); // Close the modal after sending
+    setInputValue(""); 
+    toggleModal(); 
   };
 
   return (
@@ -123,7 +120,7 @@ const SaleHistoryAd = () => {
           }}
         >
           <TextField
-            label="Shop Name"
+            label="Send The Notice"
             variant="outlined"
             value={inputValue}
             onChange={handleInputChange}

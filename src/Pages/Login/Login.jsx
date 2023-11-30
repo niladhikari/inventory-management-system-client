@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import img1 from "../../../src/assets/image/authentication2.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    const from = location.state?.from?.pathname || "/";
+    // const from = location.state?.from?.pathname || "/";
     signIn(email, password)
       .then(() => {
         Swal.fire({
@@ -28,7 +28,7 @@ const Login = () => {
             popup: "animate__animated animate__fadeOutUp",
           },
         });
-        navigate(from, { replace: true });
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

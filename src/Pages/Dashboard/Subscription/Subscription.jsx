@@ -26,7 +26,6 @@ const Subscription = () => {
   const handleButton = (price, limit) => {
     setUpdatePrice(price)
     setUpdateLimit(limit)
-    console.log(price, limit);
   };
   return (
     <div>

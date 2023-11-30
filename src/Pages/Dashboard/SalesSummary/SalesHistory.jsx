@@ -7,12 +7,12 @@ import {
   TableRow,
   TableCell,
 } from "@mui/material";
-import Pagination from "@mui/material/Pagination"; // Import Pagination component from Material-UI
+import Pagination from "@mui/material/Pagination"; 
 
-// import useAllSales from "../../../Hook/useAllSales";
+
 import useSales from '../../../Hook/useSales';
 
-const PAGE_SIZE = 5; // Number of items per page
+const PAGE_SIZE = 5; 
 
 const SalesHistory = () => {
   const [sale] = useSales();

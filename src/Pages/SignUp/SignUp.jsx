@@ -19,7 +19,7 @@ const SignUp = () => {
   const axiosPublic = useAxiosPublic();
 
   const onSubmit = (data) => {
-    console.log(data);
+
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
@@ -34,7 +34,6 @@ const SignUp = () => {
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             setUserData( res.data);
-            console.log(37, res.data);
             if (res.data._id) {
               console.log(" user add in the database");
               reset();
@@ -45,7 +44,12 @@ const SignUp = () => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              navigate("/createStore");
+              if(res.data.crateShop){
+                navigate('/dashboard')
+              }
+              else{
+                navigate('/createStore');
+              }
             }
           });
         })

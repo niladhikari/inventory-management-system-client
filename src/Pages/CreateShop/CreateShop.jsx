@@ -14,7 +14,7 @@ const CreateShop = () => {
   const router = useNavigate()
 
   const onSubmit = async (data) => {
-    console.log(data);
+
 
     const menuItem = {
       shopName: data.shopName,
@@ -26,12 +26,12 @@ const CreateShop = () => {
       limit: 3,
     };
 
-    console.log(menuItem);
+
 
     try {
         const menuRes = await axiosPrivate.post("/shops", menuItem);
         setUserData(menuRes.data.UserData)
-        console.log(34,menuRes.data.UserData);
+
   
         // Handle success response
         if (menuRes.data.insertResult.insertedId) {

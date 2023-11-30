@@ -21,7 +21,6 @@ const CheckoutForm = () => {
         limit: updateLimit,
       })
       .then((res) => {
-        console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosPrivate, updateLimit, updatePrice]);
@@ -52,7 +51,6 @@ const CheckoutForm = () => {
     });
 
     if (error) {
-      console.log("[error]", error);
       setError(error.message);
     } else {
       console.log("[PaymentMethod]", paymentMethod);
@@ -76,7 +74,6 @@ const CheckoutForm = () => {
     } else {
       console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
-        console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
         // now save the payment in the database
         const payment = {
@@ -86,9 +83,8 @@ const CheckoutForm = () => {
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js to
         };
-        console.log(payment);
+
         const res = await axiosPrivate.post("/payments", payment);
-        console.log("payment saved", res.data);
 
         if (res.data?.paymentResult?.insertedId) {
           Swal.fire({

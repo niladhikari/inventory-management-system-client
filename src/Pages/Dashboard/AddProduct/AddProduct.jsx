@@ -27,7 +27,6 @@ const AddProduct = () => {
         "content-type": "multipart/form-data",
       },
     });
-    console.log(res.data);
     if (res.data.success) {
       // Calculating Selling Price
       // const sellingPrice =parseFloat(data.production) + 1.075 + (parseFloat(data.profit) / 100).toFixed(2);
@@ -53,7 +52,6 @@ const AddProduct = () => {
         productAddedDate: currentDate,
         saleCount: 0,
       };
-      console.log(productItem);
       const menuRes = await axiosPrivate.post("/products", productItem);
       if (menuRes.data.insertedId) {
         // show success popup
