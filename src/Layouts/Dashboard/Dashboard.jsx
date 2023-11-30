@@ -7,11 +7,22 @@ import { FaMoneyCheckDollar } from "react-icons/fa6";
 import useAuth from "../../Hook/useAuth";
 import { MdStore } from "react-icons/md";
 import { FcSalesPerformance } from "react-icons/fc";
-
+import { IoMdLogOut } from "react-icons/io";
 
 const Dashboard = () => {
   const { isAdmin } = useAuth();
   const [shop] = useShops();
+  const { logOut } = useAuth();
+
+  const handleLogout = () => {
+    logOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div>
@@ -41,7 +52,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/adminSale">
-                    <MdStore />
+                    <FcSalesPerformance />
                     Sale Summary
                   </NavLink>
                 </li>
@@ -68,7 +79,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/salesSummary">
-                  <FcSalesPerformance />
+                    <FcSalesPerformance />
                     Sales Summary
                   </NavLink>
                 </li>
@@ -82,7 +93,10 @@ const Dashboard = () => {
               </NavLink>
             </li>
             <li>
-              <button></button>
+              <button onClick={handleLogout}>
+                <IoMdLogOut />
+                LogOut
+              </button>
             </li>
           </ul>
         </div>

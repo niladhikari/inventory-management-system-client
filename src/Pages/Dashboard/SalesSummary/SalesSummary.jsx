@@ -7,21 +7,22 @@ import Paper from "@mui/material/Paper";
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaWallet, FaMoneyBillAlt } from "react-icons/fa";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import useAllSales from "../../../Hook/useAllSales";
+// import useAllSales from "../../../Hook/useAllSales";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
 import SalesHistory from "./SalesHistory";
+import useSales from "../../../Hook/useSales";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 
 const SalesSummary = () => {
-  const [allSales] = useAllSales();
-  console.log(allSales);
-  const totalSales = allSales.reduce(
+  const [sale] = useSales();
+  console.log(sale);
+  const totalSales = sale?.reduce(
     (total, item) => total + item.sellingPrice,
     0
   );
-  const totalProfit = allSales.reduce((total, item) => total + item.profit, 0);
-  const totalInvest = allSales.reduce(
+  const totalProfit = sale?.reduce((total, item) => total + item.profit, 0);
+  const totalInvest = sale?.reduce(
     (total, item) => total + item.production,
     0
   );
@@ -136,7 +137,7 @@ const SalesSummary = () => {
           >
             <FaMoneyBillAlt className="text-4xl text-white" />
             <div>
-              <div className="text-3xl font-bold">{totalProfit}</div>
+              <div className="text-3xl font-bold"> {totalProfit} %</div>
               <div className="text-2xl text-black">Total Profit</div>
             </div>
           </Paper>

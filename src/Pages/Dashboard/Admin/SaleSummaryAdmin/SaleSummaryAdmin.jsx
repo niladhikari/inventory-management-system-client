@@ -17,6 +17,7 @@ const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 const SaleSummaryAdmin = () => {
   const [allProducts] = useAllProducts();
   const [allSales] = useAllSales();
+  console.log(allSales);
   const [allUser] = useUsers();
 
   const adminObject = allUser.find((item) => item.roll === "admin");

@@ -9,7 +9,6 @@ const Navbar = () => {
   const router = useNavigate();
   const { user, logOut, tirger, setTriger,changeDashboardAndShop } = useAuth();
 
-  console.log(user);
 
  
 

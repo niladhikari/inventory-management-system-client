@@ -11,13 +11,11 @@ import { Link } from "react-router-dom";
 
 const SalesCollection = () => {
   const [product,refetch] = useProduct();
-  console.log(product);
   const axiosSecure = useAxiosSecure();
 
   const date = new Date();
-let currentDate = date.toLocaleDateString();
+  let currentDate = date.toLocaleDateString();
 
-  console.log(currentDate);
   const handleAddToCart = (item) => {
     const allInformation ={
       description:item.description,
@@ -49,7 +47,6 @@ let currentDate = date.toLocaleDateString();
           timer: 1500,
         });
         refetch();
-        // refetch cart to update the cart items count
       }
     });
   };

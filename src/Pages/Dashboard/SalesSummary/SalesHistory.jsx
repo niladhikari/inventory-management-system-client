@@ -9,15 +9,16 @@ import {
 } from "@mui/material";
 import Pagination from "@mui/material/Pagination"; // Import Pagination component from Material-UI
 
-import useAllSales from "../../../Hook/useAllSales";
+// import useAllSales from "../../../Hook/useAllSales";
+import useSales from '../../../Hook/useSales';
 
 const PAGE_SIZE = 5; // Number of items per page
 
 const SalesHistory = () => {
-  const [allSales] = useAllSales();
+  const [sale] = useSales();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const sortedSales = allSales.slice().sort((a, b) => {
+  const sortedSales = sale.slice().sort((a, b) => {
     const dateA = new Date(a.saleDate).getTime();
     const dateB = new Date(b.saleDate).getTime();
     return dateB - dateA;

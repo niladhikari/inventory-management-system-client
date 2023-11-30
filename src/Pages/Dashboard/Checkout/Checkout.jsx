@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { PDFViewer, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import useCarts from "../../../Hook/useCarts";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
+import useCarts from './../../../Hook/useCarts';
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const Checkout = () => {
-  const [cart, refetch] = useCarts();
+  const [cart, ,refetch] = useCarts();
   const [loading, setLoading] = useState(false);
   const [pdfData, setPdfData] = useState(null);
   const [showPDF, setShowPDF] = useState(false);
@@ -18,11 +18,10 @@ const Checkout = () => {
     setLoading(true);
     axiosSecure
       .patch(`/carts/${user?.email}`)
-      .then(res => {
+      .then(() => {
         setLoading(false);
-        console.log(res.data); // Handle response as needed
-        refetch(); // Refetch cart data after successful checkout
-        generatePDF(); // Generate PDF after successful checkout
+        refetch(); 
+        generatePDF(); 
       })
       .catch(err => {
         setLoading(false);
@@ -39,10 +38,10 @@ const Checkout = () => {
             {cart &&
               cart.map(product => (
                 <View key={product._id}>
-                  <image>Product Name: {product.image}</image>
+                  <Image  src={product.image} style={{ width:100, height: 100 }} />
                   <Text>Product Name: {product.name}</Text>
                   <Text>Product Discount: {product.discount}</Text>
-                  <Text>Product Discount: {parseFloat(product.sellingPrice).toFixed(2)}</Text>
+                  <Text>Product sellingPrice: {parseFloat(product.sellingPrice).toFixed(2)}</Text>
                   <Text>Product CurrentAddDate: {product.currentAddDate}</Text>
                 </View>
               ))}
@@ -56,8 +55,8 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    refetch(); // Fetch cart data on component mount
-  }, []);
+    refetch();
+  }, [refetch]);
 
   const styles = StyleSheet.create({
     page: {
@@ -72,7 +71,7 @@ const Checkout = () => {
   });
 
   return (
-    <div>
+    <div >
       <Helmet>
         <title>V Inventory | Check Out</title>
       </Helmet>
