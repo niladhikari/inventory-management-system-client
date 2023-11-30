@@ -16,7 +16,7 @@ const Navbar = () => {
   //   async function fetchDataFromServer() {
   //     try {
   //       const response = await fetch(
-  //         `http://localhost:5000/singleUser/${user?.email}`
+  //         `https://inventory-management-system-server-six.vercel.app/singleUser/${user?.email}`
   //       );
   //       const data = await response.json();
   //       setChangeDashboardAndShop(data.crateShop);

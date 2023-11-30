@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://inventory-management-system-server-six.vercel.app'
 })
 
 const useAxiosPublic = () => {

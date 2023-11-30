@@ -173,6 +173,7 @@ const SaleSummaryAdmin = () => {
           </Bar>
         </BarChart>
       </div>
+      <h2 className="text-center text-2xl font-bold my-10">Users Section</h2>
       <SaleHistoryAd></SaleHistoryAd>
     </div>
   );

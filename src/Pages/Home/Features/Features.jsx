@@ -7,7 +7,7 @@ const Features = () => {
   const [features, setFeatures] = useState([]);
 
   useEffect(() => {
-    fetch("/public/featcher.json")
+    fetch("/featcher.json")
       .then((res) => res.json())
       .then((data) => setFeatures(data))
       .catch((error) => console.error("Error fetching features:", error));

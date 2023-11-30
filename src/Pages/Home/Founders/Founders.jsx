@@ -8,7 +8,7 @@ const Founders = () => {
   const [founders, setFounders] = useState([]);
 
   useEffect(() => {
-    fetch("/public/founders.json")
+    fetch("/founders.json")
       .then((res) => res.json())
       .then((data) => setFounders(data))
       .catch((error) => console.error("Error fetching features:", error));
