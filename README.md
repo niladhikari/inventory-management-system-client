@@ -1,6 +1,6 @@
 # [Live Link](https://inventorymanagement-2e59d.web.app/)
 
-## Least five  different features in this project is:
+## Least features in this project is:
  
 - Our project's standout feature is the Home Page, where users are initially greeted. This page acts as a central hub for all our V Inventory, providing an easily accessible overview. Users can also explore our FEATURED SYSTEM,CUSTOMER REVIEW,know about our FOUNDERS and FAQ SECTION there some question answer, all from this single, user-friendly location.
 
