@@ -20,6 +20,7 @@ import AdminRoute from "./AdminRoute";
 import Error from "../Pages/Error/Error";
 import SalesSummary from "../Pages/Dashboard/SalesSummary/SalesSummary";
 import SaleSummaryAdmin from "../Pages/Dashboard/Admin/SaleSummaryAdmin/SaleSummaryAdmin";
+import Contact from "../Pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             <CreateShop></CreateShop>
           </PrivateRoute>
         ),
+      },
+      {
+         path:'/contact',
+         element:<Contact></Contact>
       },
       {
         path: "/signup",

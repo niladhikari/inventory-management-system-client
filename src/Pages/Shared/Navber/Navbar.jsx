@@ -10,21 +10,7 @@ const Navbar = () => {
   const { user, logOut, tirger, setTriger, changeDashboardAndShop, isAdmin } =
     useAuth();
 
-  // useEffect(() => {
-  //   async function fetchDataFromServer() {
-  //     try {
-  //       const response = await fetch(
-  //         `https://inventory-management-system-server-six.vercel.app/singleUser/${user?.email}`
-  //       );
-  //       const data = await response.json();
-  //       setChangeDashboardAndShop(data.crateShop);
-  //       setIsAdmin(data.roll);
-  //     } catch (error) {
-  //       console.log("Error fetching data:", error);
-  //     }
-  //   }
-  //   fetchDataFromServer();
-  // }, [setIsAdmin, user]);
+
 
   useEffect(() => {
     if (tirger) {
@@ -46,6 +32,9 @@ const Navbar = () => {
           <NavLink to={"/createStore"}>Create-Store</NavLink>
         </li>
         <li>
+          <NavLink to={"/contact"}>Contact Us</NavLink>
+        </li>
+        <li>
           <a
             href="https://www.youtube.com/watch?v=sL15VM-xN60"
             target="_blank"
@@ -63,6 +52,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
+      <li>
+          <NavLink to={"/contact"}>Contact Us</NavLink>
+        </li>
       {/* {user && (
         <li>
           {changeDashboardAndShop ? (

@@ -15,6 +15,7 @@ const UpdateProduct = () => {
     const { register, handleSubmit } = useForm();
     const axiosOpen = useAxiosPublic();
     const axiosPrivate = useAxiosSecure();
+    
     const onSubmit = async (data) => {
     // image upload to imgbb and then get an url
     const imageFile = { image: data.image[0] };
