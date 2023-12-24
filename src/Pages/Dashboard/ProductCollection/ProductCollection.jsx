@@ -52,7 +52,7 @@ const ProductCollection = () => {
           <table className="table bg-yellow-100">
             {/* head */}
             <thead>
-              <tr className="bg-orange-300 m-10"> 
+              <tr className="bg-orange-300 m-10 text-black"> 
                 <th></th>
                 <th>Product Name</th>
                 <th>Product Image</th>

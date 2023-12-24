@@ -105,7 +105,7 @@ const Contact = () => {
             ></textarea>
             <input
               type="submit"
-              className="px-5 py-2 rounded-xl bg-[crimson] font-bold mt-5"
+              className="px-5 py-2 rounded-xl bg-gray-300 text-emerald-400  font-bold mt-5"
             ></input>
           </form>
         </div>
