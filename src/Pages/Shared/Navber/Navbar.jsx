@@ -55,15 +55,6 @@ const Navbar = () => {
       <li>
           <NavLink to={"/contact"}>Contact Us</NavLink>
         </li>
-      {/* {user && (
-        <li>
-          {changeDashboardAndShop ? (
-            <NavLink to={"/dashboard"}>Dashboard</NavLink>
-          ) : (
-            <NavLink to={"/createStore"}>Create-Store</NavLink>
-          )}
-        </li>
-      )} */}
 
       {isAdmin=='admin' && changeDashboardAndShop && (
         <li>
